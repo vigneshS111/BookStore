@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="modprod.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODIFY</title>
+    <style>
+       .vv
+        {
+          
+            color:#ffffff;
+            text-shadow: 1px solid rgb(142, 133, 133);
+            font-size: 40px;
+            font-family:'Times New Roman', Times, serif;
+            font-weight: bold;
+            padding: 30px;
+            
+        }
+        input{
+          
+          color:black;
+        }
+        .v{
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 22px;
+          font-weight: bold;
+
+        }
+      </style>
+</head>
+<body style="background-image:url(./images/bookstore2.jpg); background-attachment: fixed;background-size: cover;"></body>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="mod2.html">HOME</a>
+    <a href="bill5.html">Bill</a>
+    <a href="modprod2.html">Manage Books</a>
+    <a href="detail.html">Customer Details</a>
+    <a href="LOGIN2.php" >LOG OUT</a>
+    
+  </div>
+  
+  <span style="font-size:40px; color:white; cursor:pointer; padding: 30px 30px;" onclick="openNav()">&#9776; open</span>
+    <div class="vv">ADD BOOK:</div>
+    <div>
+    <form action="addprod2.php" method="post" id="myForm1" class="form" >
+        
+        <label class="v" for="PRODUCT_ID">BOOK ID:</label>
+        <input  type="text" class="v" id="PRODUCT_ID" name="PRODUCT_ID1" required>
+        <br>
+        <label class="v" for="PRODUCT_NAME">BOOK NAME:</label>
+        <input  type="text" class="v" id="PRODUCT_NAME" name="PRODUCT_NAME1" required>
+        <br>
+        <label class="v" for="PRICE">PRICE:</label>
+        <input  type="text" class="v" id="PRICE" name="PRICE1" required><br>
+        <label class="v" for="QUANTITY">QUANTITY:</label>
+        <input type="text" class="v" id="QUANTITY" name="QUANTITY1" required>
+        <br><br><br>
+        <button class="pointer" style="font-size: medium;font-weight: bold ;background-color: rgb(126, 77, 8);color:white;border: 1px solid white;height: 30px;width: 100px;"> ADD </button>
+      </form>
+      </div>
+      <div>
+        <div class="vv" >DELETE BOOK:</div>
+        <form class="form2" action="delprod.php" method="post" id="myForm2"  >
+        
+            <label class="v" for="PID">ENTER BOOK ID:</label>
+            <input  type="text" class="v" id="PID" name="PID" required>
+            <br>
+            
+              <button class="pointer" style="font-size: medium;font-weight: bold ;background-color:  rgb(126, 77, 8);color:white;border: 1px solid white;height: 30px;width: 100px;margin-bottom: 30px;" > DELETE </button>
+          </form>
+            
+
+        </div>
+        <script>
+          function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+ /* var form = document.getElementById('myForm1');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent default form submission
+  var data = new FormData(form); // create a FormData object with form data
+  var xhr = new XMLHttpRequest(); // create a new XMLHTTPRequest object
+  xhr.open('POST', 'addprod2.php'); // set the target PHP page
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      alert(xhr.responseText); // display the response from the PHP page
+    }
+  };
+  xhr.send(data); // send the form data to the PHP page
+});*/
+
+var form = document.getElementById('myForm2');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent default form submission
+  var data = new FormData(form); // create a FormData object with form data
+  var xhr = new XMLHttpRequest(); // create a new XMLHTTPRequest object
+  xhr.open('POST', 'delprod.php'); // set the target PHP page
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      alert(xhr.responseText); // display the response from the PHP page
+    }
+  };
+  xhr.send(data); // send the form data to the PHP page
+});
+
+            </script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bill</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <link rel='stylesheet' href='https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css'>
+    <script src="https://code.jquery.com/ui/1.13.0-rc.3/jquery-ui.min.js" integrity="sha256-R6eRO29lbCyPGfninb/kjIXeRjMOqY3VWPVk6gMhREk=" crossorigin="anonymous"></script>
+    <style>
+ #search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  visibility: visible;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.pointer {cursor: pointer;}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.text-head{
+  color:rgb(17, 77, 243);
+  font-weight: bold;
+}
+
+.bimg
+{
+    background-image:url(./images/bookstore4.jpg),linear-gradient(to bottom,rgba(0,0,0,0.5),rgba(0,0,0,0)); 
+
+    background-attachment: fixed;
+    background-size: cover;
+}
+.vvv
+{
+    color:rgb(225, 221, 221);
+    font-size: larger;
+    font-weight: bold;
+}
+ @media print{
+    .katon{
+        visibility: hidden;
+        display: none;
+        background-image: none;
+    }
+    .vvvv
+    {
+      visibility: hidden;
+    }
+  
+ }
+  </style>
+</head> 
+<body class="bimg">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="mod2.html">HOME</a>
+        <a href="bill5.html">Bill</a>
+        <a href="modprod2.html">Manage Books</a>
+        <a href="detail.html">Customer Details</a>
+        <a href="LOGIN2.php" >LOG OUT</a>
+        
+      </div>
+      
+      <span class='vvvv' style="font-size:40px; color:white; cursor:pointer; padding: 30px 30px;" onclick="openNav()">&#9776; open</span>
+    <div class='container pt-5'>
+        <h1 class='text-center text-primary'>BILL</h1><hr>
+        
+        <form method='post' action='bill2.php' id="myForm" autocomplete='off'>
+          <div class='row'>
+            <div class='col-md-4'>
+              <h5 class='text-head'>Bill Details</h5>
+              <div class='form-group'>
+                <label class="vvv">Bill No</label>
+                <input type='text' name='invoice_no' required class='form-control'>
+              </div>
+              <div class='form-group'>
+                <label class="vvv">Bill Date</label>
+                <input type='text' name='invoice_date' id='date' required class='form-control'>
+              </div>
+            </div>
+            <div class='col-md-8'>
+              <h5 class='text-head'>Customer Details</h5>
+              <div class='form-group'>
+                <label class="vvv">Name</label>
+                <input type='text' name='cname' required class='form-control'>
+              </div>
+              <div class='form-group'>
+                <label class="vvv">ID</label>
+                <input type='text' name='cid' required class='form-control'>
+              </div>
+              <div class='form-group'>
+                <label class="vvv">PHONE NO</label>
+                <input type='text' name='cphone' required class='form-control'>
+              </div>
+              <div class='form-group'>
+                <label class="vvv">GMAIL ID</label>
+                <input type='email' name='cmail' required class='form-control'>
+              </div>
+              <div class='form-group'>
+                <label class="vvv">MODE OF PAYMENT</label>
+                <input type='text' name='mop' required class='form-control'>
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-12'>
+              <h5 class='text-head'>Book Details</h5>
+              <table class='table table-bordered'>
+                <thead>
+                  <tr>
+                    <th class="vvv">Book ID</th>
+                    <th class="vvv">Book Name</th>
+                    <th class="vvv">Price</th>
+                    <th class="vvv">Qty</th>
+                    <th class="vvv">Total</th>
+                    <th class="vvv">Action</th>
+                  </tr>
+                </thead>
+                <tbody id='product_tbody'>
+                  <tr>
+                    <td><input type='text'  name='pid[]' id='pid' onblur="blurfn1(this.value,0)" class='form-control' required></td>
+                    <td><input type='text'  name='pname[]' id='search-input-0' onkeyup="showHint(this.value)" class='form-control' required>
+                    </td>
+                   
+                    <td><input type='text'  name='price[]' id='pprice-0' class='form-control price' required></td>
+                    <td><input type='text'  name='qty[]' class='form-control qty' required></td>
+                    <td><input type='text'  name='total[]' class='form-control total' required></td>
+                    <td><input type='button' value='x' class='btn btn-danger btn-sm btn-row-remove pointer'> </td>
+                  </tr>
+                  
+                    
+                    
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td><input type='button' value='+ Add Row' class='katon pointer btn btn-primary btn-sm' onclick="addRow()" id='btn-add-row'></td>
+                    <td colspan='3' class='text-right vvv'>Total</td>
+                    <td><input type='text' name='total' id='total' class='form-control ' required ></td>
+                  </tr>
+                  <tr>
+                    <td colspan='4' class='text-right vvv'>GST</td>
+                    <td><input type='text' name='gst' id='gst' class='form-control ' required ></td>
+                  </tr>
+                  <tr>
+                    <td colspan='4' class='text-right vvv'>GRANT TOTAL</td>
+                    <td><input type='text' name='grant_total' id='grant_total' class='form-control ' required ></td>
+                  </tr>
+                </tfoot>
+              </table>
+              <input type='submit' name='submit' value='Save Invoice' class='katon pointer btn btn-success float-right'>
+             <input type='submit' name='submit' id="print-page" value='Generate Pdf' class='katon pointer btn btn-success float-right'>
+             
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+        var form = document.getElementById('myForm');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent default form submission
+  var data = new FormData(form); // create a FormData object with form data
+  var xhr = new XMLHttpRequest(); // create a new XMLHTTPRequest object
+  xhr.open('POST', 'bill2.php'); // set the target PHP page
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      alert(xhr.responseText); // display the response from the PHP page
+    }
+  };
+  xhr.send(data); // send the form data to the PHP page
+});
+function showHint(val)
+{
+const input = document.getElementById('search-input');
+input.addEventListener('input', function() {
+  //const query = input.value;
+  const query = val;
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'search.php?q=' + query);
+  xhr.onload = function() {
+    const results = JSON.parse(xhr.responseText);
+    const list = document.getElementById('search-results');
+    list.innerHTML = '';
+    for (let i = 0; i < results.length; i++) {
+      const option = document.createElement('option');
+      option.value = results[i].value;
+      list.appendChild(option);
+    }
+  };
+  xhr.send();
+
+});
+}
+function blurfn1(val, index) {
+  const query = val;
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'blur.php?q=' + query, true);
+  xhr.onload = function() {
+    const results = JSON.parse(xhr.responseText);
+    document.getElementById('search-input-'+index).value=results.PRODUCT_NAME;
+    document.getElementById('pprice-'+index).value=results.PRICE;
+  };
+  xhr.send();
+}
+
+
+function addRow() {
+  var table = document.getElementById("product_tbody");
+  var lastIndex = table.rows.length ;
+  var row = table.insertRow(lastIndex);
+
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+
+  cell1.innerHTML = '<input type="text" name="pid[]" class="form-control" onblur="blurfn1(this.value, ' + lastIndex + ')">';
+  cell2.innerHTML = '<input type="text" name="pname[]" id="search-input-'+lastIndex+'" class="form-control">';
+  cell3.innerHTML = '<input type="text" name="price[]" id="pprice-'+lastIndex+'" class="form-control price">';
+  cell4.innerHTML = '<input type="number" name="qty[]" class="form-control qty">';
+  cell5.innerHTML = '<input type="text" name="total[]" class="form-control total">';
+  cell6.innerHTML = '<input type="button" value="x" class="btn btn-danger btn-sm btn-row-remove">';
+
+}
+
+
+        $(document).ready(function(){
+          $("#date").datepicker({
+            dateFormat:"dd-mm-yy"
+          });
+          
+         
+          
+          $("body").on("click",".btn-row-remove",function(){
+            if(confirm("Are You Sure?")){
+              $(this).closest("tr").remove();
+              grand_total();
+            }
+          });
+  
+          $("body").on("keyup",".price",function(){
+            var price=Number($(this).val());
+            var qty=Number($(this).closest("tr").find(".qty").val());
+            $(this).closest("tr").find(".total").val(price*qty);
+            grand_total();
+          });
+          
+          $("body").on("keyup",".qty",function(){
+            var qty=Number($(this).val());
+            var price=Number($(this).closest("tr").find(".price").val());
+            $(this).closest("tr").find(".total").val(price*qty);
+            grand_total();
+          });      
+          
+          function grand_total(){
+            var tot=0;
+            $(".total").each(function(){
+              tot+=Number($(this).val());
+            });
+           const gst = tot * 0.025;
+
+            var grantTotal = tot + gst;
+            $("#total").val(tot);
+            $("#gst").val(gst);
+            $("#grant_total").val(grantTotal);
+          }
+        });
+
+        document.getElementById("print-page").addEventListener("click", function() {
+      window.print();
+    });
+      </script>
+</body>   
+</html>
